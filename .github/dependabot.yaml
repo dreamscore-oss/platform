@@ -1,0 +1,47 @@
+version: 2
+
+updates:
+  ## GitHub Actions
+  - package-ecosystem: "github-actions"
+    target-branch: main
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions-packages:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "ci: "
+    labels:
+      - "fix"
+
+  # NPM
+  - package-ecosystem: "npm"
+    target-branch: develop
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      npm-packages:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "fix: "
+    labels:
+      - "fix"
+
+  # Gradle
+  - package-ecosystem: "gradle"
+    target-branch: develop
+    directory: "/backend/"
+    schedule:
+      interval: "weekly"
+    groups:
+      gradle-packages:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "fix: "
+    labels:
+      - "fix"

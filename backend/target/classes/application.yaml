@@ -1,0 +1,18 @@
+spring:
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        transaction:
+          jta:
+            platform: org.hibernate.engine.transaction.jta.platform.internal.SpringJtaPlatform
+    hibernate:
+      ddl-auto: validate
+
+  mustache:
+    check-template-location: false
+
+  liquibase:
+    enabled: true

@@ -1,0 +1,9 @@
+{
+    "name": "@dreamscore/api",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "scripts": {
+      "test": "exit 0"
+    }
+  }
+  

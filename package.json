@@ -1,0 +1,45 @@
+{
+  "name": "@dreamscore/platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "./frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreamscore-oss/platform"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "scripts": {
+    "start": "run-s start:*",
+    "start:frontend": "npm run start --workspace @dreamscore/frontend",
+    "start:backend": "cd backend; env spring.profiles.active=dev ./mvnw spring-boot:run",
+    "test": "",
+    "test:frontend": "npm run test --workspace @dreamscore/frontend",
+    "test:backend": "",
+    "lint": "run-s lint:*",
+    "lint:frontend": "npm run lint --workspace @dreamscore/frontend",
+    "lint:prettier": "prettier --l './**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml,java}'",
+    "prettier": "run-s prettier:*",
+    "prettier:backend": "prettier -w './backend/**/*.java'",
+    "prettier:frontend": "prettier -w './**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml}'",
+    "typecheck": "npm run typecheck --workspace @dreamscore/frontend",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.2.5",
+    "prettier-plugin-java": "2.6.0",
+    "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@commitlint/config-conventional": "19.0.3"
+  },
+  "lint-staged": {
+    "**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml,java}": [
+      "prettier --write"
+    ]
+  }
+}

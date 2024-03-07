@@ -1,0 +1,107 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1709846887527-1
+      author: jankott (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_pet
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: pet
+  - changeSet:
+      id: 1709846887527-2
+      author: jankott (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: user_status
+                  type: INT
+            tableName: user
+  - changeSet:
+      id: 1709846887527-3
+      author: jankott (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_visit
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: date
+                  type: timestamp
+              - column:
+                  name: veterinarian_name
+                  type: VARCHAR(255)
+              - column:
+                  name: clinic_name
+                  type: VARCHAR(255)
+              - column:
+                  name: pet_id
+                  type: BIGINT
+            tableName: visit
+  - changeSet:
+      id: 1709846887527-4
+      author: jankott (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: pet
+            constraintName: FK_PET_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 1709846887527-5
+      author: jankott (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: pet_id
+            baseTableName: visit
+            constraintName: FK_VISIT_ON_PET
+            referencedColumnNames: id
+            referencedTableName: pet

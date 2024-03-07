@@ -1,0 +1,17 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "paths": {
+    "@dreamscore/api": ["./packages/api/src/index.ts"],
+    "@dreamscore/components": ["./packages/components/src/index.ts"],
+    "@dreamscore/i18n": ["./packages/i18n/src/index.ts"],
+    "@dreamscore/state": ["./packages/state/src/index.ts"],
+    "@dreamscore/utils": ["./packages/utils/src/index.ts"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+}
