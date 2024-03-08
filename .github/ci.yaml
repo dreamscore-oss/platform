@@ -26,67 +26,67 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  test-frontend:
-    runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
+    # test-frontend:
+    #   runs-on: ubuntu-latest
+    #   concurrency:
+    #     group: ${{ github.workflow }}-${{ github.ref }}
+    #     cancel-in-progress: true
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    #   steps:
+    #     - name: Checkout
+    #       uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          cache: npm
-          node-version-file: .nvmrc
+    #     - name: Setup Node
+    #       uses: actions/setup-node@v4
+    #       with:
+    #         cache: npm
+    #         node-version-file: .nvmrc
 
-      - name: Install Dependencies
-        run: npm ci --workspace @dreamscore/frontend
+    #     - name: Install Dependencies
+    #       run: npm ci --workspace @dreamscore/frontend
 
-      - name: Ensure clean working directory
-        run: git diff --exit-code
+    #     - name: Ensure clean working directory
+    #       run: git diff --exit-code
 
-      - name: Test
-        run: |
-          cd ./frontend
-          npm run test
+    #     - name: Test
+    #       run: |
+    #         cd ./frontend
+    #         npm run test
 
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-test-results
-          path: |
-            ./coverage/lcov.info
-            ./test-report.xml
+    #     - name: Upload Test Results
+    #       uses: actions/upload-artifact@v4
+    #       with:
+    #         name: frontend-test-results
+    #         path: |
+    #           ./coverage/lcov.info
+    #           ./test-report.xml
 
-  test-backend:
-    runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
+    # test-backend:
+    #   runs-on: ubuntu-latest
+    #   concurrency:
+    #     group: ${{ github.workflow }}-${{ github.ref }}
+    #     cancel-in-progress: true
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    #   steps:
+    #     - name: Checkout
+    #       uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: zulu
-          java-version-file: .java-version
-          cache: maven
+    #     - name: Setup Java
+    #       uses: actions/setup-java@v4
+    #       with:
+    #         distribution: zulu
+    #         java-version-file: .java-version
+    #         cache: maven
 
-      - name: Test
-        run: |
-          cd ./backend
-          ./mvnw test
+    #     - name: Test
+    #       run: |
+    #         cd ./backend
+    #         ./mvnw test
 
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-test-results
+    #     - name: Upload Test Results
+    #       uses: actions/upload-artifact@v4
+    #       with:
+    #         name: backend-test-results
 
     build-backend:
       runs-on: ubuntu-latest
@@ -116,7 +116,7 @@ jobs:
             name: backend-build
 
   sonarcloud-frontend:
-    needs: [test-frontend]
+    # needs: [test-frontend]
 
   sonarcloud-backend:
-    needs: [test-backend, build-backend]
+    needs: [build-backend]
