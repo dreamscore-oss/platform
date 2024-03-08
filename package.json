@@ -18,7 +18,10 @@
     "start:backend": "cd backend; env spring.profiles.active=dev ./mvnw spring-boot:run",
     "test": "",
     "test:frontend": "npm run test --workspace @dreamscore/frontend",
-    "test:backend": "",
+    "test:backend": "cd backend; ./mvnw test",
+    "build": "run-s build:*",
+    "build:frontend": "npm run build --workspace @dreamscore/frontend",
+    "build:backend": "cd backend; ./mvnw clean compile",
     "lint": "run-s lint:*",
     "lint:frontend": "npm run lint --workspace @dreamscore/frontend",
     "lint:prettier": "prettier --l './**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml,java}'",
@@ -35,6 +38,7 @@
     "prettier": "3.2.5",
     "prettier-plugin-java": "2.6.0",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@commitlint/cli": "19.0.3",
     "@commitlint/config-conventional": "19.0.3"
   },
   "lint-staged": {

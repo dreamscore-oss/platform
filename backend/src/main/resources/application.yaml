@@ -14,4 +14,4 @@ spring:
     check-template-location: false
 
   liquibase:
-    enabled: true
+    enabled: false
