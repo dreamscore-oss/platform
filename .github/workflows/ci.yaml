@@ -31,93 +31,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-    # test-frontend:
-    #   runs-on: ubuntu-latest
-    #   concurrency:
-    #     group: ${{ github.workflow }}-${{ github.ref }}-test-frontend
-    #     cancel-in-progress: true
-
-    #   steps:
-    #     - name: Checkout
-    #       uses: actions/checkout@v4
-
-    #     - name: Setup Node
-    #       uses: actions/setup-node@v4
-    #       with:
-    #         cache: npm
-    #         node-version-file: .nvmrc
-
-    #     - name: Install Dependencies
-    #       run: npm ci --workspace @dreamscore/frontend
-
-    #     - name: Ensure clean working directory
-    #       run: git diff --exit-code
-
-    #     - name: Test
-    #       run: |
-    #         cd ./frontend
-    #         npm run test
-
-    #     - name: Upload Test Results
-    #       uses: actions/upload-artifact@v4
-    #       with:
-    #         name: frontend-test-results
-    #         path: |
-    #           ./coverage/lcov.info
-    #           ./test-report.xml
-
-    # test-backend:
-    #   runs-on: ubuntu-latest
-    #   concurrency:
-    #     group: ${{ github.workflow }}-${{ github.ref }}-test-backend
-    #     cancel-in-progress: true
-
-    #   steps:
-    #     - name: Checkout
-    #       uses: actions/checkout@v4
-
-    #     - name: Setup Java
-    #       uses: actions/setup-java@v4
-    #       with:
-    #         distribution: zulu
-    #         java-version-file: .java-version
-    #         cache: maven
-
-    #     - name: Test
-    #       run: |
-    #         cd ./backend
-    #         ./mvnw test
-
-    #     - name: Upload Test Results
-    #       uses: actions/upload-artifact@v4
-    #       with:
-    #         name: backend-test-results
-
-  # build-backend:
-  #   runs-on: ubuntu-latest
-  #   concurrency:
-  #     group: ${{ github.workflow }}-${{ github.ref }}-build-backend
-  #     cancel-in-progress: true
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Setup Java
-  #       uses: actions/setup-java@v4
-  #       with:
-  #         distribution: zulu
-  #         java-version-file: .java-version
-  #         cache: maven
-  #     - name: Build
-  #       run: |
-  #         cd ./backend
-  #         ./mvnw clean compile
-  #     - name: Upload Build
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: backend-build
-
   sonarcloud-frontend:
-    # needs: [test-frontend]
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}-sonarcloud-frontend
@@ -149,5 +63,34 @@ jobs:
         with:
           projectBaseDir: ./frontend
 
-  # sonarcloud-backend:
-  #   needs: [build-backend]
+  sonarcloud-backend:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-sonarcloud-backend
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version-file: .java-version
+          cache: maven
+
+      - name: Cache SonarCloud Packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: cd backend; ./mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=dreamscore-platform-backend
