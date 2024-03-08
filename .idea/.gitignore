@@ -7,4 +7,8 @@
 /dataSources/
 /dataSources.local.xml
 # GitHub Copilot persisted chat sessions
+/copilot/
+# SonarLint local storage
+/sonarlint/
+# GitHub Copilot persisted chat sessions
 /copilot/chatSessions
