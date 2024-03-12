@@ -7,3 +7,7 @@
 **/dist
 **/target
 **/coverage
+
+## Mobile
+**/android
+**/ios
