@@ -1,0 +1,30 @@
+name: Story
+description: User or technical story for new features or improvements
+labels: ["Story"]
+projects: ["dreamscore-oss/2"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Please provide the details of the story.
+  - type: input
+    id: user-story
+    attributes:
+      label: User Story
+      description: The user story or goal.
+      placeholder: "As a [type of user], I want [an action] so that [a benefit/a value]"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Criteria that must be met for the story to be considered complete.
+      placeholder: "List of acceptance criteria."
+    validations:
+      required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any additional information, notes, or resources.

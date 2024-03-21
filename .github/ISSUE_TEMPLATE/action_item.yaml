@@ -1,0 +1,30 @@
+name: Action Item
+description: Track action items from meetings or discussions
+labels: ["Action Item"]
+projects: ["dreamscore-oss/4"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Please provide the details of the action item.
+  - type: input
+    id: action-summary
+    attributes:
+      label: Action Item Summary
+      description: A brief summary of the action item.
+      placeholder: "Ex: Prepare a report on customer feedback trends"
+    validations:
+      required: true
+  - type: textarea
+    id: action-details
+    attributes:
+      label: Detailed Description
+      description: A detailed description of the action item, including any specific instructions or expectations.
+      placeholder: "Describe in detail what needs to be accomplished, including any specific instructions or expected outcomes."
+    validations:
+      required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any additional information, notes, or resources relevant to the action item.
