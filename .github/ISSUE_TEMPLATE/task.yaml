@@ -1,0 +1,33 @@
+name: Task
+description: General task ticket for work items
+labels: ["Task"]
+projects: ["dreamscore-oss/2"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Please provide the details of the task.
+  - type: input
+    id: task-summary
+    attributes:
+      label: Task Summary
+      description: A brief summary of the task.
+      placeholder: "Ex: Update documentation for X feature"
+    validations:
+      required: true
+  - type: textarea
+    id: task-details
+    attributes:
+      label: Detailed Description
+      description: A detailed description of the task.
+      placeholder: "Provide a comprehensive detail of what needs to be done."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Criteria that must be met for the task to be considered complete.
+      placeholder: "List of acceptance criteria."
+    validations:
+      required: true

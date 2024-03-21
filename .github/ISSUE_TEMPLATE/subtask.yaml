@@ -1,0 +1,33 @@
+name: Subtask
+description: Subtask for breaking down tasks into smaller, manageable pieces
+labels: ["Subtask"]
+projects: ["dreamscore-oss/2"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Please provide the details of the subtask.
+  - type: input
+    id: parent-task
+    attributes:
+      label: Parent Task
+      description: Reference to the parent task or story this subtask is part of.
+      placeholder: "Link to the parent task or story"
+    validations:
+      required: true
+  - type: textarea
+    id: subtask-details
+    attributes:
+      label: Subtask Details
+      description: Detailed description of what needs to be done.
+      placeholder: "Describe in detail what this subtask involves."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Criteria that must be met for the subtask to be considered complete.
+      placeholder: "List of acceptance criteria."
+    validations:
+      required: true
