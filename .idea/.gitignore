@@ -6,9 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-# GitHub Copilot persisted chat sessions
-/copilot/
-# SonarLint local storage
+# GitHub Copilot
+/copilot
+# SonarLint
 /sonarlint/
 # GitHub Copilot persisted chat sessions
 /copilot/chatSessions

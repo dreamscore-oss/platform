@@ -15,3 +15,8 @@ spring:
 
   liquibase:
     enabled: true
+
+okta:
+  oauth2:
+    issuer: https://dreamscore.eu.auth0.com/
+    audience: https://dreamscore/api

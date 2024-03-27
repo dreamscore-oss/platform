@@ -1,7 +1,5 @@
 spring:
-datasource:
-  url: jdbc:postgresql://localhost:5432/dreamscore
-  username: postgres
-  password: secret
-
-petclinic.host.uri: http://localhost:8081
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dreamscore
+    username: postgres
+    password: secret

@@ -1,3 +1,6 @@
+/**
+ * Main import order declaration for JS and TS files
+ */
 const DEFAULT_IMPORT_ORDER = [
     // marker packages for server/client components
     "^(client-only|server-only)",
@@ -18,17 +21,41 @@ const DEFAULT_IMPORT_ORDER = [
 exports.DEFAULT_IMPORT_ORDER = DEFAULT_IMPORT_ORDER;
 
 /**
- * @type {import('prettier').Config}
+ * Options config fragment for JS, TS, and JSX
+ * @type {Partial<import('prettier').Config>}
+ * @internal
  */
-module.exports = {
+const jsAndTsOptions = {
+    // Base overrides
+    trailingComma: "es5",
+    // Options for @trivago/prettier-plugin-sort-imports
+    importOrderParserPlugins: ["typescript", "jsx", "classProperties", "decorators-legacy"],
+    importOrder: DEFAULT_IMPORT_ORDER,
+    importOrderSeparation: true,
+    importOrderSortSpecifiers: true,
+    // Dedicated plugins for JS/TS
     plugins: [
-        // https://github.com/jhipster/prettier-java
-        require.resolve("prettier-plugin-java"),
         // https://github.com/trivago/prettier-plugin-sort-imports#apis
         require.resolve("@trivago/prettier-plugin-sort-imports"),
     ],
+};
 
-    // Base rules
+/**
+ * Use 2 spaces and 80 with because stories also used in documentation
+ * @type {Partial<import('prettier').Config>}
+ * @internal
+ */
+const storybookFileOptions = {
+    useTabs: false,
+    tabWidth: 2,
+    printWidth: 60,
+};
+
+/**
+ * @type {import('prettier').Config}
+ */
+module.exports = {
+    // Base default rules for all file types
     printWidth: 120,
     tabWidth: 4,
     useTabs: false,
@@ -39,21 +66,78 @@ module.exports = {
     bracketSameLine: false,
     arrowParens: "always",
 
-    // Options for @trivago/prettier-plugin-sort-imports
-    importOrderParserPlugins: ["typescript", "jsx", "classProperties", "decorators-legacy"],
-    importOrder: DEFAULT_IMPORT_ORDER,
-    importOrderSeparation: true,
-    importOrderSortSpecifiers: true,
-
     // Language specific settings
     overrides: [
         {
+            files: ["*.gql", "*.graphql"],
+            options: {
+                parser: "graphql",
+            },
+        },
+        {
             files: ["*.js", "*.jsx"],
             options: {
+                ...jsAndTsOptions,
                 parser: "babel",
-                importOrder: DEFAULT_IMPORT_ORDER,
-                importOrderSeparation: true,
-                importOrderSortSpecifiers: true,
+            },
+        },
+        {
+            files: ["*.ts", "*.tsx"],
+            options: {
+                ...jsAndTsOptions,
+                parser: "typescript",
+            },
+        },
+        {
+            files: ["*.stories.js", "*.stories.jsx"],
+            options: {
+                ...jsAndTsOptions,
+                ...storybookFileOptions,
+                parser: "typescript",
+            },
+        },
+        {
+            files: ["*.stories.ts", "*.stories.tsx"],
+            options: {
+                ...jsAndTsOptions,
+                ...storybookFileOptions,
+                parser: "typescript",
+            },
+        },
+        {
+            files: ["*.java"],
+            options: {
+                plugins: [
+                    // https://github.com/jhipster/prettier-java
+                    require.resolve("prettier-plugin-java"),
+                ],
+            },
+        },
+        {
+            files: ["*.css"],
+            options: {
+                parser: "css",
+            },
+        },
+        {
+            files: ["*.scss"],
+            options: {
+                parser: "scss",
+            },
+        },
+        {
+            files: ["*.html"],
+            options: {
+                parser: "html",
+            },
+        },
+        {
+            files: ["*.yml", "*.yaml"],
+            options: {
+                parser: "yaml",
+                singleQuote: false,
+                useTabs: false,
+                tabWidth: 2,
             },
         },
         {
@@ -62,6 +146,7 @@ module.exports = {
                 parser: "json",
                 tabWidth: 2,
                 printWidth: 100,
+                trailingComma: "none",
             },
         },
         {
@@ -80,21 +165,6 @@ module.exports = {
                 useTabs: false,
                 tabWidth: 2,
                 printWidth: 60,
-            },
-        },
-        {
-            files: ["*.ts", "*.tsx"],
-            options: {
-                parser: "typescript",
-            },
-        },
-        {
-            files: ["*.yml", "*.yaml"],
-            options: {
-                parser: "yaml",
-                singleQuote: false,
-                useTabs: false,
-                tabWidth: 2,
             },
         },
     ],

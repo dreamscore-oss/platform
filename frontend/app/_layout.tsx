@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Auth0Provider } from "react-native-auth0";
 
 import { useColorScheme } from "@/app/components/useColorScheme";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -48,11 +49,13 @@ function RootLayoutNav() {
     const colorScheme = useColorScheme();
 
     return (
-        <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-            <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-            </Stack>
-        </ThemeProvider>
+        <Auth0Provider domain={"dreamscore.eu.auth0.com"} clientId={"UQzgMJyuTbrbY5ilfYLfEQsbKnupS281"}>
+            <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+                <Stack>
+                    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                    <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+                </Stack>
+            </ThemeProvider>
+        </Auth0Provider>
     );
 }

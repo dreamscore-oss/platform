@@ -15,13 +15,13 @@
   "scripts": {
     "start": "run-s start:*",
     "start:frontend": "npm run start --workspace @dreamscore/frontend",
-    "start:backend": "cd backend; env spring.profiles.active=dev ./mvnw spring-boot:run",
+    "start:backend": "./backend-scripts.sh start",
     "test": "",
     "test:frontend": "npm run test --workspace @dreamscore/frontend",
-    "test:backend": "cd backend; ./mvnw test",
+    "test:backend": "./backend-scripts.sh test",
     "build": "run-s build:*",
     "build:frontend": "npm run build --workspace @dreamscore/frontend",
-    "build:backend": "cd backend; ./mvnw clean compile",
+    "build:backend": "./backend-scripts.sh build",
     "lint": "run-s lint:*",
     "lint:frontend": "npm run lint --workspace @dreamscore/frontend",
     "lint:prettier": "prettier --l './**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml,java}'",
@@ -29,7 +29,7 @@
     "prettier:backend": "prettier -w './backend/**/*.java'",
     "prettier:frontend": "prettier -w './**/*.{json,md,mdx,ts,tsx,js,jsx,plist,yml,yaml}'",
     "typecheck": "npm run typecheck --workspace @dreamscore/frontend",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "9.0.11",

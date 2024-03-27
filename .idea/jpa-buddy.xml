@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" useNamedParametersForRepoQuery="true" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+  <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="sourceModelValue" value="Default" />
+    <option name="targetDbValue" value="2cee731f-13ab-4e34-8a94-2ceb566bda44" />
     <option name="isSnapshotDb" value="false" />
-    <option name="snapshotDbValue" value="d58abdf1-cc58-48c6-a1ff-0f6ce2a979fd" />
+    <option name="snapshotDbValue" value="2cee731f-13ab-4e34-8a94-2ceb566bda44" />
     <option name="snapshotModelValue" value="Default" />
-    <option name="updateChangeLogPath" value="backend/src/main/resources/db/changelog/db.changelog-master.yaml" />
-    <option name="updateDbConnectionName" value="d58abdf1-cc58-48c6-a1ff-0f6ce2a979fd" />
   </component>
 </project>
