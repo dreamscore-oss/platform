@@ -10,3 +10,5 @@
 /copilot
 # SonarLint
 /sonarlint/
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
