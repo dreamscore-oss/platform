@@ -2,34 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.5.5.Final/897f6f115930b936287bef552bf5fe28cc64717d/mapstruct-processor-1.5.5.Final.jar" />
         </processorPath>
-      </profile>
-      <profile name="Annotation profile for backend" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-        </processorPath>
-        <module name="backend" />
+        <module name="backend.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="backend.main" target="21" />
-      <module name="backend.swagger" target="21" />
-      <module name="backend.test" target="21" />
+      <module name="expo-dev-launcher-gradle-plugin" target="11" />
+      <module name="expo-dev-launcher-gradle-plugin.main" target="11" />
+      <module name="expo-dev-launcher-gradle-plugin.test" target="11" />
+      <module name="react-native-gradle-plugin" target="11" />
+      <module name="react-native-gradle-plugin.main" target="11" />
+      <module name="react-native-gradle-plugin.test" target="11" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="backend" options="-parameters" />
-    </option>
   </component>
 </project>

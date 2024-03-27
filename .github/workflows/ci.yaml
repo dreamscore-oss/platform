@@ -80,7 +80,7 @@ jobs:
         with:
           distribution: zulu
           java-version-file: .java-version
-          cache: maven
+          cache: gradle
 
       - name: Cache SonarCloud Packages
         uses: actions/cache@v4
@@ -93,4 +93,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd backend; ./mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=dreamscore-platform-backend
+        run: cd backend; ./gradlew build sonar --info

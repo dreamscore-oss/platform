@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dreamscore@localhost" uuid="d58abdf1-cc58-48c6-a1ff-0f6ce2a979fd">
+    <data-source source="LOCAL" name="dreamscore@localhost" uuid="2cee731f-13ab-4e34-8a94-2ceb566bda44">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <remarks>PostgreSQL</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/dreamscore</jdbc-url>
       <jdbc-additional-properties>
