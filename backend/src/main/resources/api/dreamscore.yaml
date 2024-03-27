@@ -464,6 +464,7 @@ paths:
     get:
       tags:
         - /leagues
+      operationId: getLeagueById
       summary: Get a specific league
       parameters:
         - $ref: "#/components/parameters/leagueIdPath"

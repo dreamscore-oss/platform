@@ -21,10 +21,16 @@ public class UsersApiDelegateImpl implements UsersApiDelegate {
     }
 
     @Override
+    public ResponseEntity<Void> addUser() {
+        return UsersApiDelegate.super.addUser();
+    }
+
+    @Override
     public ResponseEntity<UserDto> getUserById(String userId) {
         User user = userService
-            .getUser(userId)
+            .getUserById(userId)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found"));
+
         return new ResponseEntity<>(userMapper.toDto(user), HttpStatus.OK);
     }
 }

@@ -47,7 +47,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.liquibase:liquibase-core")
 	implementation("org.mapstruct:mapstruct:$mapstructVersion")
-/*	implementation("com.okta.spring:okta-spring-boot-starter:$oktaSpringBootStarterVersion")*/
+	implementation("com.okta.spring:okta-spring-boot-starter:$oktaSpringBootStarterVersion")
 	implementation("org.openapitools:jackson-databind-nullable:$jacksonDatabindNullableVersion")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocOpenapiStarterWebmvcUiVersion")
 	compileOnly("org.projectlombok:lombok")
