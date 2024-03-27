@@ -42,6 +42,7 @@ paths:
     post:
       tags:
         - /users
+      operationId: addUser
       summary: Create a new user
       responses:
         "204":
@@ -51,6 +52,7 @@ paths:
     get:
       tags:
         - /users
+      operationId: getUserById
       summary: Get the user details
       parameters:
         - $ref: "#/components/parameters/userIdPath"
@@ -65,6 +67,7 @@ paths:
     patch:
       tags:
         - /users
+      operationId: updateUser
       summary: Update the user details
       parameters:
         - $ref: "#/components/parameters/userIdPath"

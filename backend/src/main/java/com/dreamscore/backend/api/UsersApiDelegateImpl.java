@@ -21,7 +21,7 @@ public class UsersApiDelegateImpl implements UsersApiDelegate {
     }
 
     @Override
-    public ResponseEntity<UserDto> usersUserIdGet(String userId) {
+    public ResponseEntity<UserDto> getUserById(String userId) {
         User user = userService
             .getUser(userId)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found"));
